@@ -1,1 +1,8 @@
-#example
+##example
+
+To-Do:
+
+-resize images to make processing them easier
+-figure out how converting ocv to numpy works
+-start writing the training code
+-make a documentation on how CNNs work
