@@ -46,9 +46,3 @@ for category in CONS_LIST:
         #np_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         np_image = img_to_array(image)
         data.append(np_image)
-
-#showing that the order of the labels and dataset is correct
-print(labels[0])
-plt.imshow(data[0])
-plt.axis("off")
-plt.show()
