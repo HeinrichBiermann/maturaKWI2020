@@ -1,0 +1,91 @@
+(cv) oleksandrs-macbook-air:git arthur$ python learning_script.py -d /Users/arthur/ocv_install/matura/kaggle_birds
+Using TensorFlow backend.
+2020-08-09 19:31:53.061634: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-08-09 19:31:53.077039: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7fa688617ec0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-08-09 19:31:53.077065: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+conv2d (Conv2D)              (None, 64, 64, 32)        320
+_________________________________________________________________
+batch_normalization (BatchNo (None, 64, 64, 32)        128
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) (None, 32, 32, 32)        0
+_________________________________________________________________
+dropout (Dropout)            (None, 32, 32, 32)        0
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 32, 32, 64)        18496
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 32, 32, 64)        256
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 32, 32, 64)        102464
+_________________________________________________________________
+batch_normalization_2 (Batch (None, 32, 32, 64)        256
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 16, 16, 64)        0
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 16, 16, 64)        0
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 16, 16, 128)       73856
+_________________________________________________________________
+batch_normalization_3 (Batch (None, 16, 16, 128)       512
+_________________________________________________________________
+conv2d_4 (Conv2D)            (None, 16, 16, 128)       409728
+_________________________________________________________________
+batch_normalization_4 (Batch (None, 16, 16, 128)       512
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 8, 8, 128)         0
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 8, 8, 128)         0
+_________________________________________________________________
+flatten (Flatten)            (None, 8192)              0
+_________________________________________________________________
+dense (Dense)                (None, 1024)              8389632
+_________________________________________________________________
+activation (Activation)      (None, 1024)              0
+_________________________________________________________________
+batch_normalization_5 (Batch (None, 1024)              4096
+_________________________________________________________________
+dropout_3 (Dropout)          (None, 1024)              0
+_________________________________________________________________
+dense_1 (Dense)              (None, 210)               215250
+=================================================================
+Total params: 9,215,506
+Trainable params: 9,212,626
+Non-trainable params: 2,880
+_________________________________________________________________
+[INFO]Found 210 categories.
+[INFO]Processing category 1 ...
+[INFO]Processing category 20 ...
+[INFO]Processing category 40 ...
+[INFO]Processing category 60 ...
+[INFO]Processing category 80 ...
+[INFO]Processing category 100 ...
+[INFO]Processing category 120 ...
+[INFO]Processing category 140 ...
+[INFO]Processing category 160 ...
+[INFO]Processing category 180 ...
+[INFO]Processing category 200 ...
+Epoch 1/10
+248/248 [==============================] - 770s 3s/step - loss: 6.0313 - accuracy: 0.0206
+Epoch 2/10
+248/248 [==============================] - 683s 3s/step - loss: 5.0914 - accuracy: 0.0660
+Epoch 3/10
+248/248 [==============================] - 676s 3s/step - loss: 4.5844 - accuracy: 0.1074
+Epoch 4/10
+248/248 [==============================] - 698s 3s/step - loss: 4.2053 - accuracy: 0.1508
+Epoch 5/10
+248/248 [==============================] - 678s 3s/step - loss: 3.8908 - accuracy: 0.1912
+Epoch 6/10
+248/248 [==============================] - 682s 3s/step - loss: 3.6180 - accuracy: 0.2254
+Epoch 7/10
+248/248 [==============================] - 677s 3s/step - loss: 3.3925 - accuracy: 0.2631
+Epoch 8/10
+248/248 [==============================] - 684s 3s/step - loss: 3.2101 - accuracy: 0.2881
+Epoch 9/10
+248/248 [==============================] - 682s 3s/step - loss: 3.0302 - accuracy: 0.3153
+Epoch 10/10
+248/248 [==============================] - 688s 3s/step - loss: 2.8963 - accuracy: 0.3458
+194/194 [==============================] - 43s 220ms/step - loss: 4.6985 - accuracy: 0.1466
+Test acc:  0.14662566781044006
