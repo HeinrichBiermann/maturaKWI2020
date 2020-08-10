@@ -82,6 +82,8 @@ print("[INFO]Found " + str(len(CONS_LIST)) + " categories.")
 
 #constructing the labels and data list
 for category in CONS_LIST:
+	if str(category) = ".DS_Store":
+		continue
 	SPECIES_DIR = os.path.join(CONS_DIR, str(category))
 	SPECIES_LIST = os.listdir(SPECIES_DIR)
 	amount = len(SPECIES_LIST)
