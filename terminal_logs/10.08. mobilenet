@@ -1,0 +1,46 @@
+(cv) oleksandrs-macbook-air:git arthur$ python mobilenet_learning.py -d /Users/arthur/ocv_install/matura/kaggle_birds
+[INFO]Found  210  categories.
+2020-08-10 10:46:20.383873: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-08-10 10:46:20.422949: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7fb3094c7910 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-08-10 10:46:20.422979: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+mobilenet_1.00_128 (Model)   (None, 4, 4, 1024)        3228864
+_________________________________________________________________
+flatten (Flatten)            (None, 16384)             0
+_________________________________________________________________
+activation (Activation)      (None, 16384)             0
+_________________________________________________________________
+dense (Dense)                (None, 210)               3440850
+=================================================================
+Total params: 6,669,714
+Trainable params: 3,440,850
+Non-trainable params: 3,228,864
+_________________________________________________________________
+[INFO]Processing category 1 ...
+[INFO]Processing category 20 ...
+[INFO]Processing category 40 ...
+[INFO]Processing category 60 ...
+[INFO]Processing category 80 ...
+[INFO]Processing category 100 ...
+[INFO]Processing category 120 ...
+[INFO]Processing category 140 ...
+[INFO]Processing category 160 ...
+[INFO]Processing category 180 ...
+[INFO]Processing category 200 ...
+[INFO]Processing labels & data arrays...
+[INFO]Compiling model...
+Epoch 1/5
+248/248 [==============================] - 350s 1s/step - loss: 2.4912 - accuracy: 0.5008
+Epoch 2/5
+248/248 [==============================] - 329s 1s/step - loss: 0.3931 - accuracy: 0.9023
+Epoch 3/5
+248/248 [==============================] - 329s 1s/step - loss: 0.1120 - accuracy: 0.9848
+Epoch 4/5
+248/248 [==============================] - 325s 1s/step - loss: 0.0441 - accuracy: 0.9985
+Epoch 5/5
+248/248 [==============================] - 332s 1s/step - loss: 0.0276 - accuracy: 0.9996
+194/194 [==============================] - 75s 385ms/step - loss: 0.8277 - accuracy: 0.7882
+Test acc:  0.7881534099578857
