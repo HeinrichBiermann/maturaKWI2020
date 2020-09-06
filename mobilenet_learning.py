@@ -2,24 +2,19 @@
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import Sequential
-from tensorflow.keras.layers import Conv2D
-from tensorflow.keras.layers import MaxPooling2D
 from tensorflow.keras.layers import Flatten
-from tensorflow.keras.layers import Dense
-from tensorflow.keras.layers import Dropout
 from tensorflow.keras.layers import Activation
-from tensorflow.keras.layers import BatchNormalization
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.applications import MobileNet
-import numpy as np
-from tensorflow.keras.preprocessing.image import img_to_array
 from sklearn.preprocessing import LabelBinarizer
 from sklearn.model_selection import train_test_split
 import numpy as np
 import argparse
 import cv2
 import os
-import matplotlib.pyplot as plt
 
 #argument parser for command line arguments
 ap = argparse.ArgumentParser()
@@ -32,6 +27,7 @@ args = vars(ap.parse_args())
 #initialize important constants
 IMAGE_DIMS = (128, 128, 3)
 iteration = 0
+epochs = 12
 #input_tensor = Input(shape=(IMAGE_DIMS))
 
 #initialize labels and data lists
@@ -49,7 +45,7 @@ print("[INFO]Found ", category_count, " categories.")
 
 #call for MobileNet weights
 stock_mobilenet = MobileNet(weights = "imagenet", include_top = False,
-	input_shape = IMAGE_DIMS)
+	input_shape = IMAGE_DIMS, dropout = 0.005)
 stock_mobilenet.trainable = False #Freeze MobileNet weights
 
 #adding the MobileNet convolutions to the model
@@ -61,6 +57,11 @@ model.add(Flatten())
 model.add(Activation("relu"))
 model.add(Dense(category_count, activation= "softmax"))
 model.summary()
+
+#defining image data generator for augmentation
+datagen = ImageDataGenerator(rotation_range = 15, width_shift_range = 0.15,
+	height_shift_range = 0.15, shear_range = 0.05, zoom_range = 0.2,
+	horizontal_flip = True)
 
 #constructing the labels and data list
 for category in CONS_LIST:
@@ -102,8 +103,10 @@ labels = lb.fit_transform(labels)
 
 #compiling, running and testing the model
 print("[INFO]Compiling model...")
+datagen.fit(train_data)
 model.compile(loss = "categorical_crossentropy", optimizer = "sgd",
 	metrics = ["accuracy"])
-model.fit(train_data, train_labels, batch_size = 100, epochs = 5, verbose = 1)
+model.fit(datagen.flow(train_data, train_labels, batch_size = 10),
+	steps_per_epoch = len(train_data) // 10, epochs = epochs, verbose = 1)
 test_loss, test_acc = model.evaluate(test_data, test_labels)
 print("Test acc: ", test_acc)

@@ -1,0 +1,66 @@
+(cv) oleksandrs-macbook-air:git arthur$ python mobilenet_learning.py -d /Users/arthur/ocv_install/matura/kaggle_birds
+[INFO]Found  210  categories.
+2020-09-06 15:13:33.788108: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-09-06 15:13:33.832635: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7fbde8c1a6b0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-09-06 15:13:33.832681: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+mobilenet_1.00_128 (Model)   (None, 4, 4, 1024)        3228864
+_________________________________________________________________
+flatten (Flatten)            (None, 16384)             0
+_________________________________________________________________
+activation (Activation)      (None, 16384)             0
+_________________________________________________________________
+dense (Dense)                (None, 210)               3440850
+=================================================================
+Total params: 6,669,714
+Trainable params: 3,440,850
+Non-trainable params: 3,228,864
+_________________________________________________________________
+[INFO]Processing category 1 ...
+[INFO]Processing category 20 ...
+[INFO]Processing category 40 ...
+[INFO]Processing category 60 ...
+[INFO]Processing category 80 ...
+[INFO]Processing category 100 ...
+[INFO]Processing category 120 ...
+[INFO]Processing category 140 ...
+[INFO]Processing category 160 ...
+[INFO]Processing category 180 ...
+[INFO]Processing category 200 ...
+[INFO]Processing labels & data arrays...
+[INFO]Compiling model...
+Epoch 1/15
+1235/1235 [==============================] - 225s 182ms/step - loss: 10.2825 - accuracy: 0.3676
+Epoch 2/15
+1235/1235 [==============================] - 228s 185ms/step - loss: 6.1333 - accuracy: 0.5726
+Epoch 3/15
+1235/1235 [==============================] - 186s 151ms/step - loss: 4.0414 - accuracy: 0.6990
+Epoch 4/15
+1235/1235 [==============================] - 213s 172ms/step - loss: 4.0610 - accuracy: 0.7055
+Epoch 5/15
+1235/1235 [==============================] - 189s 153ms/step - loss: 2.9722 - accuracy: 0.7693
+Epoch 6/15
+1235/1235 [==============================] - 213s 172ms/step - loss: 3.1725 - accuracy: 0.7659
+Epoch 7/15
+1235/1235 [==============================] - 191s 155ms/step - loss: 2.5292 - accuracy: 0.8007
+Epoch 8/15
+1235/1235 [==============================] - 209s 169ms/step - loss: 2.6191 - accuracy: 0.8044
+Epoch 9/15
+1235/1235 [==============================] - 191s 155ms/step - loss: 2.0913 - accuracy: 0.8309
+Epoch 10/15
+1235/1235 [==============================] - 211s 171ms/step - loss: 2.1937 - accuracy: 0.8287
+Epoch 11/15
+1235/1235 [==============================] - 187s 151ms/step - loss: 1.8664 - accuracy: 0.8458
+Epoch 12/15
+1235/1235 [==============================] - 213s 172ms/step - loss: 2.0470 - accuracy: 0.8432
+Epoch 13/15
+1235/1235 [==============================] - 187s 152ms/step - loss: 1.6223 - accuracy: 0.8633
+Epoch 14/15
+1235/1235 [==============================] - 212s 172ms/step - loss: 1.7456 - accuracy: 0.8570
+Epoch 15/15
+1235/1235 [==============================] - 192s 156ms/step - loss: 1.6053 - accuracy: 0.8688
+194/194 [==============================] - 78s 402ms/step - loss: 3.3791 - accuracy: 0.8131
+Test acc:  0.8130765557289124
