@@ -12,23 +12,28 @@ from tensorflow.keras.applications import MobileNet
 from sklearn.preprocessing import LabelBinarizer
 from sklearn.model_selection import train_test_split
 import numpy as np
+import datetime
+import pickle
 import argparse
 import cv2
 import os
 
 #argument parser for command line arguments
 ap = argparse.ArgumentParser()
-ap.add_argument("-d", "--dataset", required=True,
-	help="path to input dataset")
-#ap.add_argument("-m", "--model", required=True,
-    #help="path to output model file")
+ap.add_argument("-d", "--dataset", required = True,
+	help = "path to input dataset")
+ap.add_argument("-m", "--model", required = True,
+	help = "path to model output")
+ap.add_argument("-l", "--labelbin", required = True,
+	help = "path to labelbinarizer output")
 args = vars(ap.parse_args())
 
 #initialize important constants
 IMAGE_DIMS = (128, 128, 3)
+MODEL_PATH = os.path.join(args["model"], "model_" + str(datetime.date.now()))
+LB_PATH = os.path.join(args["labelbin"], "labelbin_" + str(datetime.date.now()))
 iteration = 0
-epochs = 12
-#input_tensor = Input(shape=(IMAGE_DIMS))
+epochs = 20
 
 #initialize labels and data lists
 labels = []
@@ -41,11 +46,11 @@ CONS_LIST = os.listdir(CONS_DIR)
 category_count = len(CONS_LIST)
 
 #[INFO]shows the amount of categories found
-print("[INFO]Found ", category_count, " categories.")
+print("Found ", category_count, " categories.")
 
 #call for MobileNet weights
 stock_mobilenet = MobileNet(weights = "imagenet", include_top = False,
-	input_shape = IMAGE_DIMS, dropout = 0.005)
+	input_shape = IMAGE_DIMS, dropout = 0.02)
 stock_mobilenet.trainable = False #Freeze MobileNet weights
 
 #adding the MobileNet convolutions to the model
@@ -59,7 +64,7 @@ model.add(Dense(category_count, activation= "softmax"))
 model.summary()
 
 #defining image data generator for augmentation
-datagen = ImageDataGenerator(rotation_range = 15, width_shift_range = 0.15,
+datagen = ImageDataGenerator(rotation_range = 20, width_shift_range = 0.15,
 	height_shift_range = 0.15, shear_range = 0.05, zoom_range = 0.2,
 	horizontal_flip = True)
 
@@ -75,9 +80,9 @@ for category in CONS_LIST:
 
 	#[INFO]shows the processing progress
 	iteration = iteration + 1
-	n = iteration / 20
+	n = iteration / 40
 	if iteration == 1 or n.is_integer() == True:
-		print("[INFO]Processing category " + str(iteration) + " ...")
+		print("Processing category " + str(iteration) + " ...")
 
     #constructing the data list containing all the bird images
 	for bird in SPECIES_LIST:
@@ -89,7 +94,7 @@ for category in CONS_LIST:
 		data.append(np_image)
 
 #converting labels and data to numpy arrays
-print("[INFO]Processing labels & data arrays...")
+print("Processing labels & data arrays...")
 labels = np.array(labels)
 data = np.array(data, dtype="float32") / 255.0
 
@@ -99,10 +104,10 @@ labels = lb.fit_transform(labels)
 
 #train-test split
 (train_data, test_data, train_labels, test_labels) = train_test_split(data,
-	labels, test_size = 0.2, random_state = 42)
+	labels, test_size = 0.1, random_state = 42)
 
 #compiling, running and testing the model
-print("[INFO]Compiling model...")
+print("Compiling model...")
 datagen.fit(train_data)
 model.compile(loss = "categorical_crossentropy", optimizer = "sgd",
 	metrics = ["accuracy"])
@@ -110,3 +115,13 @@ model.fit(datagen.flow(train_data, train_labels, batch_size = 10),
 	steps_per_epoch = len(train_data) // 10, epochs = epochs, verbose = 1)
 test_loss, test_acc = model.evaluate(test_data, test_labels)
 print("Test acc: ", test_acc)
+
+#saving model to specified location on disk
+print("Saving model to disk...")
+model.save(MODEL_PATH, save_format = "h5")
+
+#saving labelbinarizer to specified location on disk
+print("Saving labelbinarizer to disk...")
+location = open(LB_PATH, "wb")
+location.write(pickle.dumps(lb))
+location.close()

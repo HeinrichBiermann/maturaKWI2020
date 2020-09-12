@@ -1,0 +1,65 @@
+(cv) oleksandrs-macbook-air:git arthur$ python mobilenet_learning.py -d /Users/arthur/ocv_install/matura/kaggle_birds -m /Users/arthur/ocv_install/matura/workspace/git/models -l /Users/arthur/ocv_install/matura/workspace/git/labelbins
+Found  210  categories.
+2020-09-12 15:07:26.622696: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-09-12 15:07:26.665388: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7fb704b68fb0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-09-12 15:07:26.665420: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+mobilenet_1.00_128 (Model)   (None, 4, 4, 1024)        3228864
+_________________________________________________________________
+flatten (Flatten)            (None, 16384)             0
+_________________________________________________________________
+activation (Activation)      (None, 16384)             0
+_________________________________________________________________
+dense (Dense)                (None, 210)               3440850
+=================================================================
+Total params: 6,669,714
+Trainable params: 3,440,850
+Non-trainable params: 3,228,864
+_________________________________________________________________
+Processing category 1 ...
+Processing category 20 ...
+Processing category 40 ...
+Processing category 60 ...
+Processing category 80 ...
+Processing category 100 ...
+Processing category 120 ...
+Processing category 140 ...
+Processing category 160 ...
+Processing category 180 ...
+Processing category 200 ...
+Processing labels & data arrays...
+Compiling model...
+Epoch 1/12
+2780/2780 [==============================] - 562s 202ms/step - loss: 7.9408 - accuracy: 0.4865
+Epoch 2/12
+2780/2780 [==============================] - 560s 201ms/step - loss: 4.1123 - accuracy: 0.7100
+Epoch 3/12
+2780/2780 [==============================] - 510s 183ms/step - loss: 3.1965 - accuracy: 0.7696
+Epoch 4/12
+2780/2780 [==============================] - 489s 176ms/step - loss: 2.6793 - accuracy: 0.8021
+Epoch 5/12
+2780/2780 [==============================] - 481s 173ms/step - loss: 2.2491 - accuracy: 0.8275
+Epoch 6/12
+2780/2780 [==============================] - 486s 175ms/step - loss: 2.0105 - accuracy: 0.8466
+Epoch 7/12
+2780/2780 [==============================] - 483s 174ms/step - loss: 1.7836 - accuracy: 0.8610
+Epoch 8/12
+2780/2780 [==============================] - 478s 172ms/step - loss: 1.5941 - accuracy: 0.8719
+Epoch 9/12
+2780/2780 [==============================] - 481s 173ms/step - loss: 1.5256 - accuracy: 0.8794
+Epoch 10/12
+2780/2780 [==============================] - 488s 176ms/step - loss: 1.3260 - accuracy: 0.8901
+Epoch 11/12
+2780/2780 [==============================] - 496s 178ms/step - loss: 1.2860 - accuracy: 0.8964
+Epoch 12/12
+2780/2780 [==============================] - 497s 179ms/step - loss: 1.2472 - accuracy: 0.8972
+97/97 [==============================] - 41s 422ms/step - loss: 3.1488 - accuracy: 0.8398
+Test acc:  0.8398058414459229
+Saving model to disk...
+Saving labelbinarizer to disk...
+Traceback (most recent call last):
+  File "mobilenet_learning.py", line 125, in <module>
+    location = open(args["labelbin"], "wb")
