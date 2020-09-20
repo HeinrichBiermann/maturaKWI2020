@@ -30,8 +30,8 @@ args = vars(ap.parse_args())
 
 #initialize important constants
 IMAGE_DIMS = (128, 128, 3)
-MODEL_PATH = os.path.join(args["model"], "model_" + str(datetime.date.now()))
-LB_PATH = os.path.join(args["labelbin"], "labelbin_" + str(datetime.date.now()))
+MODEL_PATH = os.path.join(args["model"], "model_" + str(datetime.date.today()))
+LB_PATH = os.path.join(args["labelbin"], "labelbin_" + str(datetime.date.today()))
 iteration = 0
 epochs = 20
 

@@ -1,0 +1,7 @@
+(cv) oleksandrs-macbook-air:git arthur$ python classifyer.py -m /Users/arthur/ocv_install/matura/workspace/git/models/_2020-09-12\ 15\:07\:26.593144 -l /Users/arthur/ocv_install/matura/workspace/git/labelbins/labelbin_2020-09-20 -i /Users/arthur/Documents/screenshots/Screenshot\ 2020-09-20\ at\ 21.22.52.png
+libpng warning: iCCP: extra compressed data
+2020-09-20 21:23:24.449795: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-09-20 21:23:24.531026: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7ff066dd4e60 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-09-20 21:23:24.531141: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+EURASIAN MAGPIE
+0.9793057
