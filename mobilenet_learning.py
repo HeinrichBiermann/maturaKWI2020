@@ -28,7 +28,7 @@ ap.add_argument("-l", "--labelbin", required = True,
 	help = "path to labelbinarizer output")
 args = vars(ap.parse_args())
 
-#initialize important constants
+#initialize important constants, directories and defaults
 IMAGE_DIMS = (128, 128, 3)
 MODEL_PATH = os.path.join(args["model"], "model_" + str(datetime.date.today()))
 LB_PATH = os.path.join(args["labelbin"], "labelbin_" + str(datetime.date.today()))
@@ -86,6 +86,8 @@ for category in CONS_LIST:
 
     #constructing the data list containing all the bird images
 	for bird in SPECIES_LIST:
+		if str(bird) == ".DS_Store":
+			continue
 		imagePath = os.path.join(SPECIES_DIR, str(bird))
 		image = cv2.imread(imagePath)
 		image = cv2.resize(image, (IMAGE_DIMS[1], IMAGE_DIMS[0]))

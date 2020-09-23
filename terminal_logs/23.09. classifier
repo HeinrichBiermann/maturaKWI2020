@@ -1,0 +1,43 @@
+(cv) oleksandrs-macbook-air:git arthur$ python classifyer.py -i /Users/arthur/ocv_install/matura/kaggle_birds/consolidated/BLACK\ SWAN/001.jpg -f /Users/arthur/Documents/screenshots
+2020-09-23 19:27:07.957393: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-09-23 19:27:08.026917: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f8ff8138cd0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-09-23 19:27:08.026957: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+BLACK SWAN, 1.0
+libpng warning: iCCP: extra compressed data
+TEAL DUCK, 0.99980456
+libpng warning: iCCP: extra compressed data
+MASKED BOOBY, 1.0
+libpng warning: iCCP: extra compressed data
+CALIFORNIA GULL, 0.99999917
+libpng warning: iCCP: extra compressed data
+NORTHERN GANNET, 0.7904387
+libpng warning: iCCP: extra compressed data
+JABIRU, 0.89078283
+libpng warning: iCCP: extra compressed data
+EURASIAN MAGPIE, 0.9793057
+libpng warning: iCCP: extra compressed data
+SHOEBILL, 1.0
+libpng warning: iCCP: extra compressed data
+NORTHERN GANNET, 0.9618847
+libpng warning: iCCP: extra compressed data
+BLACK SWAN, 1.0
+libpng warning: iCCP: extra compressed data
+BALD EAGLE, 1.0
+libpng warning: iCCP: extra compressed data
+ALBATROSS, 0.99029213
+libpng warning: iCCP: extra compressed data
+ALBATROSS, 1.0
+libpng warning: iCCP: extra compressed data
+NORTHERN GANNET, 0.9618847
+libpng warning: iCCP: extra compressed data
+GRAY PARTRIDGE, 1.0
+libpng warning: iCCP: extra compressed data
+CALIFORNIA CONDOR, 0.9995926
+libpng warning: iCCP: extra compressed data
+MYNA, 0.7431901
+libpng warning: iCCP: extra compressed data
+ALBATROSS, 1.0
+libpng warning: iCCP: extra compressed data
+BLACK SWAN, 0.99999666
+libpng warning: iCCP: extra compressed data
+COMMON STARLING, 0.93304145
