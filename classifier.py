@@ -9,13 +9,13 @@ import os
 
 #argument parser for command line arguments
 ap = argparse.ArgumentParser()
-ap.add_argument("-m", "--model", required = False,
+ap.add_argument("-m", "--model", 
     help = "path to already trained model, else default is used")
-ap.add_argument("-l", "--labelbin", required = False,
+ap.add_argument("-l", "--labelbin",
     help = "path to defined labelbinarizer file, else default is used")
-ap.add_argument("-i", "--image", required = False,
+ap.add_argument("-i", "--image",
     help = "path to single image to be classified")
-ap.add_argument("-f", "--folder", required = False,
+ap.add_argument("-f", "--folder",
     help = "path to folder containing images to be classified")
 args = vars(ap.parse_args())
 

@@ -24,16 +24,20 @@ ap.add_argument("-d", "--dataset", required = True,
 	help = "path to input dataset")
 ap.add_argument("-m", "--model", required = True,
 	help = "path to model output")
-ap.add_argument("-l", "--labelbin", required = True,
+ap.add_argument("-l", "--labelbin",
 	help = "path to labelbinarizer output")
+ap.add_argument("-e", "--epochs", default = 6,
+	help = "number of epochs")
 args = vars(ap.parse_args())
 
 #initialize important constants, directories and defaults
 IMAGE_DIMS = (128, 128, 3)
-MODEL_PATH = os.path.join(args["model"], "model_" + str(datetime.date.today()))
-LB_PATH = os.path.join(args["labelbin"], "labelbin_" + str(datetime.date.today()))
+MODEL_PATH = os.path.join(args["model"],
+	"model_" + str(datetime.date.today()))
+if args["labelbin"] != None:
+	LB_PATH = os.path.join(args["labelbin"],
+		"labelbin_" + str(datetime.date.today()))
 iteration = 0
-epochs = 20
 
 #initialize labels and data lists
 labels = []
@@ -114,7 +118,8 @@ datagen.fit(train_data)
 model.compile(loss = "categorical_crossentropy", optimizer = "sgd",
 	metrics = ["accuracy"])
 model.fit(datagen.flow(train_data, train_labels, batch_size = 10),
-	steps_per_epoch = len(train_data) // 10, epochs = epochs, verbose = 1)
+	steps_per_epoch = len(train_data) / 10,
+	epochs = int(args["epochs"]), verbose = 1)
 test_loss, test_acc = model.evaluate(test_data, test_labels)
 print("Test acc: ", test_acc)
 
@@ -123,7 +128,8 @@ print("Saving model to disk...")
 model.save(MODEL_PATH, save_format = "h5")
 
 #saving labelbinarizer to specified location on disk
-print("Saving labelbinarizer to disk...")
-location = open(LB_PATH, "wb")
-location.write(pickle.dumps(lb))
-location.close()
+if args["labelbin"] != None:
+	print("Saving labelbinarizer to disk...")
+	location = open(LB_PATH, "wb")
+	location.write(pickle.dumps(lb))
+	location.close()
