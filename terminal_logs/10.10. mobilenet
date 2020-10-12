@@ -1,0 +1,93 @@
+(cv) oleksandrs-macbook-air:git arthur$ python mobilenet_learning.py -d /Users/arthur/ocv_install/matura/kaggle_birds -m /Users/arthur/ocv_install/matura/workspace/git/models -e 30
+Found  211  categories.
+2020-10-10 19:41:38.371220: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-10-10 19:41:38.427903: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7fef9bc09d10 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-10-10 19:41:38.427954: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+mobilenet_1.00_128 (Model)   (None, 4, 4, 1024)        3228864
+_________________________________________________________________
+flatten (Flatten)            (None, 16384)             0
+_________________________________________________________________
+activation (Activation)      (None, 16384)             0
+_________________________________________________________________
+dense (Dense)                (None, 210)               3440850
+=================================================================
+Total params: 6,669,714
+Trainable params: 3,440,850
+Non-trainable params: 3,228,864
+_________________________________________________________________
+Processing category 1 ...
+Processing category 40 ...
+Processing category 80 ...
+Processing category 120 ...
+Processing category 160 ...
+Processing category 200 ...
+Processing labels & data arrays...
+Compiling model...
+Epoch 1/30
+2781/2780 [==============================] - 497s 179ms/step - loss: 7.9063 - accuracy: 0.4892
+Epoch 2/30
+2781/2780 [==============================] - 519s 187ms/step - loss: 4.0836 - accuracy: 0.7084
+Epoch 3/30
+2781/2780 [==============================] - 481s 173ms/step - loss: 3.2356 - accuracy: 0.7620
+Epoch 4/30
+2781/2780 [==============================] - 496s 178ms/step - loss: 2.6875 - accuracy: 0.8025
+Epoch 5/30
+2781/2780 [==============================] - 466s 168ms/step - loss: 2.2832 - accuracy: 0.8253
+Epoch 6/30
+2781/2780 [==============================] - 468s 168ms/step - loss: 1.9867 - accuracy: 0.8465
+Epoch 7/30
+2781/2780 [==============================] - 511s 184ms/step - loss: 1.8194 - accuracy: 0.8599
+Epoch 8/30
+2781/2780 [==============================] - 468s 168ms/step - loss: 1.6219 - accuracy: 0.8719
+Epoch 9/30
+2781/2780 [==============================] - 481s 173ms/step - loss: 1.5151 - accuracy: 0.8823
+Epoch 10/30
+2781/2780 [==============================] - 540s 194ms/step - loss: 1.3631 - accuracy: 0.8889
+Epoch 11/30
+2781/2780 [==============================] - 498s 179ms/step - loss: 1.3030 - accuracy: 0.8937
+Epoch 12/30
+2781/2780 [==============================] - 473s 170ms/step - loss: 1.2553 - accuracy: 0.8992
+Epoch 13/30
+2781/2780 [==============================] - 469s 169ms/step - loss: 1.1410 - accuracy: 0.9077
+Epoch 14/30
+2781/2780 [==============================] - 476s 171ms/step - loss: 1.1041 - accuracy: 0.9107
+Epoch 15/30
+2781/2780 [==============================] - 499s 179ms/step - loss: 1.0133 - accuracy: 0.9142
+Epoch 16/30
+2781/2780 [==============================] - 471s 169ms/step - loss: 0.9729 - accuracy: 0.9173
+Epoch 17/30
+2781/2780 [==============================] - 522s 188ms/step - loss: 0.8774 - accuracy: 0.9232
+Epoch 18/30
+2781/2780 [==============================] - 555s 200ms/step - loss: 0.9185 - accuracy: 0.9258
+Epoch 19/30
+2781/2780 [==============================] - 507s 182ms/step - loss: 0.9209 - accuracy: 0.9255
+Epoch 20/30
+2781/2780 [==============================] - 509s 183ms/step - loss: 0.8696 - accuracy: 0.9289
+Epoch 21/30
+2781/2780 [==============================] - 553s 199ms/step - loss: 0.8323 - accuracy: 0.9314
+Epoch 22/30
+2781/2780 [==============================] - 542s 195ms/step - loss: 0.7920 - accuracy: 0.9339
+Epoch 23/30
+2781/2780 [==============================] - 502s 180ms/step - loss: 0.7927 - accuracy: 0.9338
+Epoch 24/30
+2781/2780 [==============================] - 494s 178ms/step - loss: 0.7189 - accuracy: 0.9391
+Epoch 25/30
+2781/2780 [==============================] - 497s 179ms/step - loss: 0.6809 - accuracy: 0.9414
+Epoch 26/30
+2781/2780 [==============================] - 501s 180ms/step - loss: 0.6725 - accuracy: 0.9410
+Epoch 27/30
+2781/2780 [==============================] - 579s 208ms/step - loss: 0.6461 - accuracy: 0.9428
+Epoch 28/30
+2781/2780 [==============================] - 466s 168ms/step - loss: 0.6851 - accuracy: 0.9409
+Epoch 29/30
+2781/2780 [==============================] - 481s 173ms/step - loss: 0.6134 - accuracy: 0.9457
+Epoch 30/30
+2781/2780 [==============================] - 502s 180ms/step - loss: 0.6163 - accuracy: 0.9472
+97/97 [==============================] - 40s 409ms/step - loss: 3.4530 - accuracy: 0.8485
+Test acc:  0.8485437035560608
+Saving model to disk...
+(cv) oleksandrs-macbook-air:git arthur$   

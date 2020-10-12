@@ -64,7 +64,7 @@ model.add(stock_mobilenet)
 #softmax NN which does the classification
 model.add(Flatten())
 model.add(Activation("relu"))
-model.add(Dense(category_count, activation= "softmax"))
+model.add(Dense(210, activation= "softmax"))
 model.summary()
 
 #defining image data generator for augmentation
