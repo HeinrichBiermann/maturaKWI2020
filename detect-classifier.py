@@ -22,6 +22,8 @@ ap.add_argument("-c", "--minconf", type = float, default = 0.95,
     help = "minimum probability to sort out weaker detections")
 ap.add_argument("-b", "--boxes", type = int, default = 1,
     help = "set the number of detection boxes to be displayed")
+ap.add_argument("-s", "--save",
+    help = "insert image names if images are to be saved")
 args = vars(ap.parse_args())
 
 #raise custom error when neither an image nor a folder were specified
@@ -167,7 +169,7 @@ def detect_classify(original, model, labelbinarizer):
         boxes = detects.iloc[:BOXES]["Coordinate"]
 
         #get the top accuracy from the Dataframe
-        acc = detects.iloc[0]["Probability"]
+        acc = detects.loc[:,"Probability"].median()
         print(str(final_label) + ", " + str(acc))
 
         #draw a box on the image for each set of coordinates
@@ -194,6 +196,12 @@ if args["image"] != None:
     cv2.imshow("Output", processed)
     cv2.waitKey(0)
 
+    if args["save"] != None:
+        print("Saving image...")
+        filepath = "/Users/arthur/ocv_install/matura/program_output/"
+        filepath = filepath + str(args["save"]) + ".png"
+        cv2.imwrite(filepath, processed)
+
 #handling a folder containing multiple images
 if FOLDER_DIR != None:
     print("Found " + str(len(FOLDER_DIR)) + " images")
@@ -218,6 +226,14 @@ if FOLDER_DIR != None:
         BIRDS_LIST.append(processed)
 
     #show each image in the list of outputs on the screen
+    count = 0
     for image in BIRDS_LIST:
         cv2.imshow("Output", image)
         cv2.waitKey(0)
+
+        if args["save"] != None:
+            count = count + 1
+            print("Saving image " + str(count) + " ...")
+            filepath = "/Users/arthur/ocv_install/matura/program_output/"
+            filepath = filepath + str(args["save"]) + "_" + str(count) + ".png"
+            cv2.imwrite(filepath, image)
